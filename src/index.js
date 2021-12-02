@@ -6,6 +6,8 @@ const morgan = require("morgan")
 
 const app = express()
 
+const productRouter = require("./resources/product/router")
+
 
 /* SETUP MIDDLEWARE */
 
@@ -18,6 +20,7 @@ app.use(morgan("dev"))
 
 /* SETUP ROUTES */
 
+app.use("/products", productRouter)
 
 /* For regular users only */
 
