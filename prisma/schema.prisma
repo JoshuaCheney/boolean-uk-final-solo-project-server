@@ -36,3 +36,11 @@ model Contact {
   postcode    String
   user        User?
 }
+
+model Product {
+  id     Int    @id @default(autoincrement())
+  name   String @unique
+  price  Float
+  img    String
+  colour String
+}
