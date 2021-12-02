@@ -12,11 +12,12 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique
-  password String
-  role     Role      @default(USER)
-  contact  Contact[]
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String
+  role      Role    @default(USER)
+  contactId Int     @unique
+  contact   Contact @relation(fields: [contactId], references: [id])
 }
 
 enum Role {
@@ -33,6 +34,5 @@ model Contact {
   city        String
   county      String
   postcode    String
-  userId      Int    @unique
-  User        User   @relation(fields: [userId], references: [id])
+  user        User?
 }
